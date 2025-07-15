@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askara - Platform AI Video Clipping Profesional</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #e2e8f0; scroll-behavior: smooth; }
+        .hero-gradient { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.3), rgba(2, 6, 23, 0)); }
+        .spinner { border-color: #3b82f6; border-top-color: transparent; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .aspect-9-16 { position: relative; width: 100%; padding-bottom: 177.78%; background-color: #000; border-radius: 0.5rem; overflow: hidden; }
+        .aspect-9-16 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-950/60 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Askara<span class="text-blue-500">.</span></a>
+            <nav class="hidden md:flex items-center space-x-8 text-slate-300">
+                <a href="#autoclip" class="hover:text-white transition-colors">Coba Sekarang</a>
+                <a href="#fitur" class="hover:text-white transition-colors">Fitur</a>
+            </nav>
+            <a href="#autoclip" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition-all transform hover:scale-105">Buat Klip Gratis</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-gradient pt-20 pb-24">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mt-4">Buat Konten Viral dari Video Panjang dalam Hitungan Menit</h1>
+                <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mt-6">Ubah webinar, podcast, dan video streaming Anda menjadi klip pendek siap posting dengan satu klik. Coba sekarang, sepenuhnya gratis.</p>
+                <div class="mt-8"><a href="#autoclip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-lg transition-all transform hover:scale-105 text-lg">Tempel Link & Coba Sekarang</a></div>
+            </div>
+        </section>
+
+        <section id="autoclip" class="py-20 bg-slate-950/50">
+            <div class="container mx-auto px-6">
+                <div id="input-form">
+                    <div class="text-center mb-8"><h2 class="text-3xl md:text-4xl font-bold text-white">Mulai dalam Hitungan Detik</h2><p class="text-slate-400 mt-3">Cukup masukkan tautan video dari YouTube untuk memulai proses AI.</p></div>
+                    <div class="max-w-2xl mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input id="video-url" type="url" placeholder="https://www.youtube.com/watch?v=..." class="w-full px-5 py-4 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-white placeholder-gray-500">
+                            <button id="generate-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-lg transition-all transform hover:scale-105 text-lg whitespace-nowrap">Buat Klip</button>
+                        </div>
+                         <p id="error-message" class="text-red-400 text-center mt-4 hidden"></p>
+                    </div>
+                </div>
+
+                <div id="processing-state" class="hidden text-center py-12">
+                    <div class="flex justify-center items-center mb-4"><div class="spinner w-12 h-12 rounded-full border-4"></div></div>
+                    <h3 id="processing-status" class="text-2xl font-semibold text-white">Memulai proses...</h3>
+                    <p class="text-slate-400">Harap tunggu, AI kami sedang bekerja.</p>
+                </div>
+
+                <div id="results-section" class="hidden">
+                    <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-white">Klip Anda Telah Siap!</h2><p class="text-slate-400 mt-3">Berikut adalah momen terbaik, diurutkan berdasarkan potensi viral.</p></div>
+                    <div id="youtube-info" class="max-w-4xl mx-auto bg-slate-900 p-4 rounded-lg flex items-center gap-4 mb-8 border border-slate-800">
+                        <i data-lucide="youtube" class="w-10 h-10 text-red-500 flex-shrink-0"></i>
+                        <div><p class="text-sm text-slate-400">Diproses dari YouTube</p><p id="youtube-title" class="font-semibold text-white"></p></div>
+                    </div>
+                    <div id="clips-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="fitur" class="py-20">...</section>
+    </main>
+    <footer class="bg-slate-950 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center">
+                <h3 class="text-xl font-bold text-white">Askara<span class="text-blue-500">.</span></h3>
+                <p class="text-slate-400 mt-2 max-w-md mx-auto">Platform AI untuk mengubah konten video panjang menjadi klip pendek yang siap dibagikan.</p>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-slate-800 pt-8 text-center">
+                <p class="text-slate-500">Hak Cipta © 2025 Askara. Dibuat oleh Askara.</p>
+            </div>
+        </div>
+    </footer>
+    <footer class="bg-slate-950 border-t border-slate-800">...</footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Karena frontend dan backend ada di tempat yang sama, kita tidak perlu URL lengkap.
+        const BACKEND_URL = ""; 
+
+        const generateButton = document.getElementById('generate-button');
+        const videoUrlInput = document.getElementById('video-url');
+        const inputForm = document.getElementById('input-form');
+        const processingState = document.getElementById('processing-state');
+        const processingStatus = document.getElementById('processing-status');
+        const resultsSection = document.getElementById('results-section');
+        const clipsContainer = document.getElementById('clips-container');
+        const errorMessage = document.getElementById('error-message');
+        const youtubeTitle = document.getElementById('youtube-title');
+
+        generateButton.addEventListener('click', () => {
+            const url = videoUrlInput.value;
+            if (url && (url.includes('youtube.com') || url.includes('youtu.be'))) {
+                errorMessage.classList.add('hidden');
+                startProcessing(url);
+            } else {
+                errorMessage.textContent = 'Harap masukkan tautan YouTube yang valid.';
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        async function startProcessing(url) {
+            inputForm.classList.add('hidden');
+            processingState.classList.remove('hidden');
+            processingStatus.textContent = 'Menghubungi server & mengunduh video...';
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/process-video`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: url }),
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error || 'Gagal memproses video.');
+                }
+
+                const data = await response.json();
+                processingState.classList.add('hidden');
+                displayResults(data);
+
+            } catch (error) {
+                processingState.classList.add('hidden');
+                errorMessage.textContent = `Terjadi kesalahan: ${error.message}`;
+                errorMessage.classList.remove('hidden');
+                inputForm.classList.remove('hidden');
+            }
+        }
+
+        function displayResults(data) {
+            resultsSection.classList.remove('hidden');
+            youtubeTitle.textContent = data.original_title;
+            clipsContainer.innerHTML = ''; 
+
+            data.clips.sort((a, b) => (b.viralScore || 0) - (a.viralScore || 0));
+
+            data.clips.forEach((clip, index) => {
+                const downloadFileName = `${clip.title.replace(/\s+/g, '_')}.mp4`;
+                
+                let recommendationBadge = '';
+                if (index === 0) {
+                    recommendationBadge = `<div class="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i><span>Paling Direkomendasikan</span></div>`;
+                } else {
+                    recommendationBadge = `<div class="absolute top-2 right-2 bg-blue-500/50 text-blue-200 text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1"><i data-lucide="thumbs-up" class="w-3 h-3"></i><span>Potensi Tinggi</span></div>`;
+                }
+
+                const clipCard = `
+                    <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 flex flex-col relative">
+                        ${recommendationBadge}
+                        <div class="aspect-9-16">
+                            <video src="${BACKEND_URL}/clips/${clip.filename}" controls loop playsinline></video>
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-bold text-white mb-3">${clip.title}</h3>
+                            <div class="mt-auto">
+                                <a href="${BACKEND_URL}/clips/${clip.filename}" download="${downloadFileName}" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors flex items-center justify-center text-sm">
+                                    <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                                    Unduh Klip
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                clipsContainer.innerHTML += clipCard;
+            });
+            
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
