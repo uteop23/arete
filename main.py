@@ -9,7 +9,7 @@ from yt_dlp import YoutubeDL
 from moviepy.editor import VideoFileClip
 
 # --- Konfigurasi AI ---
-# Kunci API akan diambil dari file .env di Glitch.
+# Kunci API akan diambil dari "Secrets" di Replit.
 try:
     GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
     if GOOGLE_API_KEY:
@@ -17,7 +17,7 @@ try:
         model = genai.GenerativeModel('gemini-1.5-flash')
     else:
         model = None
-        print("Peringatan: GOOGLE_API_KEY tidak ditemukan. AI tidak akan berfungsi.")
+        print("Peringatan: GOOGLE_API_KEY tidak ditemukan di Secrets. AI tidak akan berfungsi.")
 except Exception as e:
     print(f"Peringatan: Gagal mengkonfigurasi Google AI. Error: {e}")
     model = None
@@ -151,4 +151,4 @@ def get_clip(filename):
     return send_from_directory(TEMP_DIR, filename)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 3000)))
+    app.run(host="0.0.0.0", port=3000)
