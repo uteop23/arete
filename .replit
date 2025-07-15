@@ -1,8 +1,0 @@
-entrypoint = "server.py"
-run = "gunicorn server:app --bind 0.0.0.0:$PORT --timeout 900"
-language = "python3"
-
-[packager]
-  [packager.features]
-    enabled = true
-    guess_imports = false
