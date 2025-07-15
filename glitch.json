@@ -1,0 +1,5 @@
+{
+    "install": "pip3 install --no-user -r requirements.txt",
+    "start": "gunicorn server:app --bind 0.0.0.0:$PORT"
+  }
+  
